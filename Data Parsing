@@ -7,6 +7,7 @@ Created on Mon Apr 15 20:12:14 2019
 """
 import csv 
 import numpy as np
+import matplotlib.pyplot as plt
 
 csv_file = open('Sample-Data-Birth-Weight-Risk.csv')
 rows = sum(1 for row in csv_file) - 1
@@ -17,7 +18,6 @@ Low_List = []
 Low_Updated = []
 Age = np.zeros((rows,))
 LWT = np.zeros((rows,))
-Smoker = np.zeros((rows,))
 Smoker_List = []
 Smoker_Updated = []
 PTL = np.zeros((rows,))
@@ -50,22 +50,22 @@ def readDataFile():
             index += 1
             line_count += 1
     for i in Low_List: 
-        if i == 'False': #False Low Birthweight values are labeled 0
+        if i == 'FALSE': #False Low Birthweight values are labeled 0
             Low_Updated.append(0)
         else: #True Low Birthweight Values are labeled 1
             Low_Updated.append(1)
     for i in Smoker_List:
-        if i == 'False': #If the Mother is not a smoker, a value of 0 is stored
+        if i == 'FALSE': #If the Mother is not a smoker, a value of 0 is stored
             Smoker_Updated.append(0)
         else: #If the Mother is a smoker, a value of 1 is stored
             Smoker_Updated.append(1) 
     for i in Hypertension_List: 
-        if i == 'False': #If the Mother does not have Hypertension, a value of 0 is stored
+        if i == 'FALSE': #If the Mother does not have Hypertension, a value of 0 is stored
             Hypertension_Updated.append(0)
         else: #If the Mother has Hypertension, a value of 1 is stored
             Hypertension_Updated.append(1)
     for i in UI_List:
-        if i == 'False':
+        if i == 'FALSE':
             UI_Updated.append(0)
         else: 
             UI_Updated.append(1)
@@ -77,3 +77,12 @@ def readDataFile():
     return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT
 
 Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
+
+def graphData(x_values, y_values, classification): 
+    plt.figure
+    plt.plot(x_values[classification == 0], y_values[classification == 0], "b.", label = 'Class 0: Condition is False')
+    plt.plot(x_values[classification == 1], y_values[classification == 1], "r.", label = 'Class 1: Condition is True')
+    plt.legend()
+    plt.show()
+
+graphData(Age, BWT, Hypertension)
