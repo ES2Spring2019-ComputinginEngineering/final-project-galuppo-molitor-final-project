@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr 15 20:12:14 2019
+
+@author: victoriamolitor
+"""
+import csv 
+import numpy as np
+
+csv_file = open('Sample-Data-Birth-Weight-Risk.csv')
+rows = sum(1 for row in csv_file) - 1
+csv_file.seek(0)
+csv_reader = csv.reader(csv_file, delimiter = ',')
+Mother_ID = np.zeros((rows,))
+Low_List = []
+Low = np.zeros((rows,))
+low_trial = []
+Age = np.zeros((rows,))
+LWT = np.zeros((rows,))
+Race = np.zeros((rows,))
+Smoker = np.zeros((rows,))
+PTL = np.zeros((rows,))
+Hypertension = np.zeros((rows,))
+UI = np.zeros((rows,))
+FTV = np.zeros((rows,))
+BWT = np.zeros((rows,))
+
+def readDataFile():
+    line_count = 0
+    index = 0
+    for row in csv_reader: 
+        if line_count == 0:
+            line_count += 1
+        else:
+            Mother_ID[index] = int(row[0])
+            Low_List.append(row[1])
+           # Low[index] = row[1]
+            #Age[index] = row[2]
+           # LWT[index] = row[3]
+            Race[index] = row[4]
+            #Smoker[index] = row[5]
+            PTL[index] = row[6]
+            #Hypertension[index] = row[7]
+            #UI[index] = row[8]
+            FTV[index] = row[9]
+            #BWT[index] = row[10]
+            index += 1
+            line_count += 1
+    for i in Low_List: 
+        index = 0
+        if i == 'False':
+            low_trial.append(0)
+            index += 1
+        else:
+            low_trial.append(1)
+            index += 1
+    Low = np.array(low_trial)
+    print(Low)
+    csv_file.close()
+    
+readDataFile()
