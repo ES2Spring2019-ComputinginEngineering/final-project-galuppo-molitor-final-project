@@ -13,7 +13,6 @@ csv_file = open('Sample-Data-Birth-Weight-Risk.csv')
 rows = sum(1 for row in csv_file) - 1
 csv_file.seek(0)
 csv_reader = csv.reader(csv_file, delimiter = ',')
-Mother_ID = np.zeros((rows,))
 Low_List = []
 Low_Updated = []
 Age = np.zeros((rows,))
