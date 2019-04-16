@@ -37,3 +37,53 @@ You can
 - Also
 - Make
 - Lists
+
+###############################################################################
+
+
+DATA SET: A data frame with 189 observations measured on 11 variables.
+    LINK: datarepository.wolframcloud.com/resources/Sample-Data-Birth-Weight-Risk
+    Title: Birth Weight Risk
+    Creator: D. W. Hosmer and S. Lemeshow
+    Publisher: Wiley
+    Date: 1989 #different than that stated in background
+    Description: 9 potential risk factors for low birth weight with birth 
+    weight outcomes.
+BACKGROUND: This study focused on risks associated with low weight at birth; 
+    the data were collected at the Baystate Medical Centre, Massachusetts, in 
+    1986. Physicians have been interested in low weight at birth for several 
+    years, because underweight babies have high rates of infant mortality and 
+    infant anomalies. The behaviour of the mother-to-be during pregnancy (diet,
+    smoking habits) can have a significant impact on the chances of having a 
+    full-term pregnancy, and thus of giving birth to a child of normal weight. 
+    The data file includes information on 189 women (identification number: ID) 
+    who came to the centre for consultation. Weight at birth is categorized as 
+    low if the child weighs less than 2,500 g.
+    LINK: cran.r-project.org/web/packages/TRSbook/TRSbook.pdf 
+    
+    
+
+PARSING: creates numpy arrays for each of the following variables
+    ID: Identification
+    LOW: Weight at birth less than 2,500g (false = 0, true = 1)
+    AGE: Age of mother, years
+    LWT: Weight of mother at last menstrual period, pounds
+    RACE: Race of mother (1=white, 2=black, 3=other)
+    SMOKER: Smoking during pregnancy (false = 0, true = 1)
+    PTL: Number of premature births in medical history
+    HYPERTENSION: Medical history of hypertension (false = 0, true = 1)
+    UI: Uterine irritability (false = 0, true = 1)
+    FVT: Number of medical consultations during first trimester 
+    BWT: Birth weight, grams
+    
+    
+Individual Correlation
+    Create function to compare BWT 
+        to Age, LWT, Race, Smoker, PLT, Hypertension, UI, and FVT
+    Analyze which have greatest impact
+    Graph results with linear regression
+    Graph correlation with descriptive statistics 
+        (distribution, confidence intervals)
+
+Mulitdimensional Clustering
+    compare to classification (Low)
