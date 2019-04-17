@@ -12,21 +12,30 @@ import matplotlib.pyplot as plt
 from DataParsing import * 
 from Functions import *
 
-def graphData(x_values, y_values, classification, title): 
-    
-    plt.figure
-    plt.plot(x_values[classification == 0], y_values[classification == 0], "b.", label = 'Class 0: Normal Birth Weight')
-    plt.plot(x_values[classification == 1], y_values[classification == 1], "r.", label = 'Class 1: Low Birth Weight')
-    plt.legend()
-    plt.show()
-
 
 # DEMONSTRATION CODE
 print("There are nine different risk factors observed in this dataset that may have an effect on the chances of a low birth weight")
-print("The individual correlation between birth weight and each the 9 risk factors is demonstrated in the following:")
-graphData(Age, BWT, Low, 'Graph of Age on Birth Weight')
-linearFit(Age, BWT)
-linearFit_Conditions(Age, BWT, Low)
+print('\n', "The individual correlation between birth weight and each the 9 risk factors is demonstrated in the following:")
 
+print('\n','\n', "NUMERICAL RISKS as scatter plots")
+print('\n', "Age of Mother")
+graphAll(Age, BWT, Low, 'Graph of Age on Birth Weight')
+print(correlationCoeddicient(Age, BWT))
+print('\n', "Normal Weight of Mother")
+graphAll(LWT, BWT, Low, 'Graph of Normal Weight of Mother on Birth Weight')
 
+print('\n', "????")
+print('\n', "Number of Premature Births in Medical History")
+graphAll(PTL, BWT, Low, 'Graph of Number of Premature Births in Medical History on Birth Weight')
+print('\n', "Number of Medical Consultations During First Trimester")
+graphAll(FTV, BWT, Low, 'Graph of Number of Medical Consultations During First Trimester on Birth Weight')
 
+print('\n', "CATEGORICAL RISKS as histograms")
+#print('\n', "Race of Mother")
+#graphAll(Race, BWT, Low, 'Graph of Race of Mother on Birth Weight')
+#print('\n', "Smoking During Pregnancy")
+#graphAll(Smoker, BWT, Low, 'Graph of Smoking During Pregnancy on Birth Weight')
+#print('\n', "Medical History of Hypertension")
+#graphAll(Hypertension, BWT, Low, 'Graph of Medical History of Hypertension on Birth Weight')
+#print('\n', "Uterine Irritability")
+#graphAll(UI, BWT, Low, 'Graph of Uterine Irritability on Birth Weight')

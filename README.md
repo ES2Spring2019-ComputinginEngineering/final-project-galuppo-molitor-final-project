@@ -65,16 +65,17 @@ BACKGROUND: This study focused on risks associated with low weight at birth;
 
 PARSING: creates numpy arrays for each of the following variables
     ID: Identification
-    LOW: Weight at birth less than 2,500g (false = 0, true = 1)
-    AGE: Age of mother, years
-    LWT: Weight of mother at last menstrual period, pounds
-    RACE: Race of mother (1=white, 2=black, 3=other)
-    SMOKER: Smoking during pregnancy (false = 0, true = 1)
-    PTL: Number of premature births in medical history
-    HYPERTENSION: Medical history of hypertension (false = 0, true = 1)
-    UI: Uterine irritability (false = 0, true = 1)
-    FVT: Number of medical consultations during first trimester 
-    BWT: Birth weight, grams
+    LOW: Weight at birth less than 2,500g (false = 0, true = 1) - categorical outcome
+    BWT: Birth weight, grams - numerical outcome
+    AGE: Age of mother, years - numerical risk factor
+    LWT: Weight of mother at last menstrual period, pounds - numerical risk factor
+    PTL: Number of premature births in medical history - numerical risk factor
+    FTV: Number of medical consultations during first trimester - numerical risk factor
+    RACE: Race of mother (1=white, 2=black, 3=other) - categorical risk factor
+    SMOKER: Smoking during pregnancy (false = 0, true = 1) - categorical risk factor
+    HYPERTENSION: Medical history of hypertension (false = 0, true = 1) - categorical risk factor
+    UI: Uterine irritability (false = 0, true = 1) - categorical risk factor
+
     
     
 Individual Correlation
