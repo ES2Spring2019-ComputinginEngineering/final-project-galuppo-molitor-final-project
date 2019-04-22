@@ -45,6 +45,7 @@ DensityPlot_2(NonSmoker_Birthweights, Smoker_Birthweights, 'Non-Smokers', 'Smoke
 
 print('\n', "Medical History of Hypertension")
 print("The mean birth weight among mothers with a history of Hypertension is", round(sum(HypertensionPos_BW)/len(HypertensionPos_BW),1), 'grams. The mean birthweight among those without a history of Hypertension is', round(sum(HypertensionNeg_BW)/len(HypertensionNeg_BW),1), 'grams.')
+print("There were", len(HypertensionPos_BW), "mothers with a history of hypertension, and", len(HypertensionNeg_BW), "without a history of hypertension.")
 DensityPlot_2(HypertensionNeg_BW, HypertensionPos_BW, 'No History of Hypertension', 'History of Hypertension', 'Density Curve: Hypertension Birthweights')
 
 print('\n', "Uterine Irritability")
