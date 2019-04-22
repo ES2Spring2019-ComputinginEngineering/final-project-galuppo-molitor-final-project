@@ -40,8 +40,8 @@ def Histogram_2(List1, List2, names, bins):
 
 def DensityPlot(List1, List2, Label1, Label2, Title):
     plt.figure()
-    sns.distplot(List1, hist = False, label = Label1)
-    sns.distplot(List2, hist = False,  label = Label2)
+    sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
+    sns.distplot(List2, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'lightblue', rug = True, label = Label2)
     plt.title(Title)
     plt.xlabel("Birthweight (Grams)")
     
