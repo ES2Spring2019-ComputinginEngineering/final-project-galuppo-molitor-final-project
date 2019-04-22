@@ -18,6 +18,7 @@ NonSmoker_Birthweights, Smoker_Birthweights = List_Creation2(NonSmoker_Birthweig
 Race_1, Race_2, Race_3 = List_Creation3(Race_1, Race_2, Race_3, Race)
 HypertensionNeg_BW, HypertensionPos_BW = List_Creation2(HypertensionNeg_BW, HypertensionPos_BW, Hypertension)
 FTV_0, FTV_1, FTV_2, FTV_3, FTV_4 = List_Creation5(FTV_0, FTV_1, FTV_2, FTV_3, FTV_4, FTV)
+UINeg, UIPos = List_Creation2(UINeg, UIPos, UI)
 
 def graphNumerical(x_values, y_values, classification, title): 
     plt.figure
