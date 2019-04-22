@@ -96,7 +96,6 @@ def List_Creation2(List1, List2, Input):
             List2.append(BWT[i])
     return List1, List2
 
-
 Race_1 = []
 Race_2 = []
 Race_3 = []
