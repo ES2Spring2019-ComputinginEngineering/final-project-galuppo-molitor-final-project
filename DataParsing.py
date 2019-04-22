@@ -76,29 +76,59 @@ def readDataFile():
     Smoker = np.array(Smoker_Updated)
     Hypertension = np.array(Hypertension_Updated)
     UI = np.array(UI_Updated)
-    return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT, Smoker_Updated, BWT_List, Low_Updated
+    return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT 
 
 #HISTOGRAM AND DENSITY PLOT DATA SEPARATION 
-Smoker_Birthweights = []
-NonSmoker_Birthweights = []
-def Smoker_List_Creation(): 
-    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT, Smoker_Updated, BWT_List, Low_Updated = readDataFile()
-    for i in range(189):
-        if Smoker_Updated[i] == 0:
-            NonSmoker_Birthweights.append(BWT[i])
-        else:
-            Smoker_Birthweights.append(BWT[i])
-    return NonSmoker_Birthweights, Smoker_Birthweights
-
 HypertensionPos_BW = []
 HypertensionNeg_BW = []
-def Hypertension_List_Creation(): 
-    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT, Smoker_Updated, BWT_List, Low_Updated = readDataFile()
-    Hypertension_List = np.array(Hypertension).tolist()
-    for i in range(189): 
-        if Hypertension_List[i]==0:
-            HypertensionNeg_BW.append(BWT[i])
-        else:
-            HypertensionPos_BW.append(BWT[i])
-    return HypertensionNeg_BW, HypertensionPos_BW
+Smoker_Birthweights = []
+NonSmoker_Birthweights = []
 
+
+def List_Creation2(List1, List2, Input): 
+    Input_List = np.array(Input).tolist()
+    for i in range(189): 
+        if Input_List[i] == 0: 
+            List1.append(BWT[i])
+        else: 
+            List2.append(BWT[i])
+    return List1, List2
+
+
+Race_1 = []
+Race_2 = []
+Race_3 = []
+def List_Creation3(List1, List2, List3, Input):
+    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
+    Input_List = np.array(Input).tolist()
+    for i in range(189):
+        if Input_List[i] == 1:
+            List1.append(BWT[i])
+        elif Input_List[i] == 2: 
+            List2.append(BWT[i])
+        else:
+            List3.append(BWT[i])
+    return List1, List2, List3
+    
+FTV_0 = []
+FTV_1 = []
+FTV_2 = []
+FTV_3 = []
+FTV_4 = [] 
+
+def List_Creation5(List1, List2, List3, List4, List5, Input): 
+    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
+    Input_List = np.array(Input).tolist()
+    for i in range(189):
+        if Input_List[i] == 0: 
+            List1.append(BWT[i])
+        elif Input_List[i] == 1:
+            List2.append(BWT[i])
+        elif Input_List[i] == 2: 
+            List3.append(BWT[i])
+        elif Input_List[i] == 3: 
+            List4.append(BWT[i])
+        else: 
+            List5.append(BWT[i])
+    return(List1, List2, List3, List4, List5)
+    
