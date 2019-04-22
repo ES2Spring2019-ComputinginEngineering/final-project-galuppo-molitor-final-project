@@ -47,5 +47,7 @@ print('\n', "Medical History of Hypertension")
 print("The mean birth weight among mothers with a history of Hypertension is", round(sum(HypertensionPos_BW)/len(HypertensionPos_BW),1), 'grams. The mean birthweight among those without a history of Hypertension is', round(sum(HypertensionNeg_BW)/len(HypertensionNeg_BW),1), 'grams.')
 DensityPlot_2(HypertensionNeg_BW, HypertensionPos_BW, 'No History of Hypertension', 'History of Hypertension', 'Density Curve: Hypertension Birthweights')
 
-#print('\n', "Uterine Irritability")
+print('\n', "Uterine Irritability")
+print("The mean birth weight among mothers with a history of Uterine Irritability is", round(sum(UIPos)/len(UIPos),1), "grams. The mean birthweight among those without a history of Uterine Irratibility is", round(sum(UINeg)/len(UINeg),1),'grams.')
+DensityPlot_2(UIPos, UINeg, 'History of Uterine Irritability', 'No History of Uterine Irratibility', 'Density Curve: Uterine Irratibility Birthweights')
 #graphAll(UI, BWT, Low, 'Graph of Uterine Irritability on Birth Weight')
