@@ -8,6 +8,8 @@ Created on Mon Apr 15 20:12:14 2019
 import csv 
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 csv_file = open('Sample-Data-Birth-Weight-Risk.csv')
 rows = sum(1 for row in csv_file) - 1
@@ -27,6 +29,7 @@ UI_List = []
 UI_Updated = []
 FTV = np.zeros((rows,))
 BWT = np.zeros((rows,))
+BWT_List = []
 
 def readDataFile():
     Race = np.zeros((rows,))
@@ -46,6 +49,7 @@ def readDataFile():
             UI_List.append(row[8])
             FTV[index] = row[9]
             BWT[index] = row[10]
+            BWT_List.append(row[10])
             index += 1
             line_count += 1
     for i in Low_List: 
@@ -72,4 +76,29 @@ def readDataFile():
     Smoker = np.array(Smoker_Updated)
     Hypertension = np.array(Hypertension_Updated)
     UI = np.array(UI_Updated)
-    return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT
+    return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT, Smoker_Updated, BWT_List, Low_Updated
+
+#HISTOGRAM AND DENSITY PLOT DATA SEPARATION 
+Smoker_Birthweights = []
+NonSmoker_Birthweights = []
+def Smoker_List_Creation(): 
+    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT, Smoker_Updated, BWT_List, Low_Updated = readDataFile()
+    for i in range(189):
+        if Smoker_Updated[i] == 0:
+            NonSmoker_Birthweights.append(BWT[i])
+        else:
+            Smoker_Birthweights.append(BWT[i])
+    return NonSmoker_Birthweights, Smoker_Birthweights
+
+HypertensionPos_BW = []
+HypertensionNeg_BW = []
+def Hypertension_List_Creation(): 
+    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT, Smoker_Updated, BWT_List, Low_Updated = readDataFile()
+    Hypertension_List = np.array(Hypertension).tolist()
+    for i in range(189): 
+        if Hypertension_List[i]==0:
+            HypertensionNeg_BW.append(BWT[i])
+        else:
+            HypertensionPos_BW.append(BWT[i])
+    return HypertensionNeg_BW, HypertensionPos_BW
+
