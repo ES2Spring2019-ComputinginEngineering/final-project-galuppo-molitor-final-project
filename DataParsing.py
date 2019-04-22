@@ -83,6 +83,8 @@ HypertensionPos_BW = []
 HypertensionNeg_BW = []
 Smoker_Birthweights = []
 NonSmoker_Birthweights = []
+UINeg = []
+UIPos = []
 
 
 def List_Creation2(List1, List2, Input): 
