@@ -85,7 +85,13 @@ Smoker_Birthweights = []
 NonSmoker_Birthweights = []
 UINeg = []
 UIPos = []
+Low_BW = []
+Normal_BW = []
+All_Birthweights = []
 
+def List_Creation1(List1, Input): 
+    List1 = np.array(Input).tolist()
+    return List1
 
 def List_Creation2(List1, List2, Input): 
     Input_List = np.array(Input).tolist()
@@ -111,6 +117,25 @@ def List_Creation3(List1, List2, List3, Input):
             List3.append(BWT[i])
     return List1, List2, List3
     
+PTL_0 = []
+PTL_1 = []
+PTL_2 = []
+PTL_3 = []
+
+def List_Creation4(List1, List2, List3, List4, Input): 
+    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
+    Input_List = np.array(Input).tolist()
+    for i in range(189):
+        if Input_List[i] == 0:
+            List1.append(BWT[i])
+        elif Input_List[i] == 1:
+            List2.append(BWT[i])
+        elif Input_List[i] == 2:
+            List3.append(BWT[i])
+        else:
+            List4.append(BWT[i])
+    return List1, List2, List3, List4 
+
 FTV_0 = []
 FTV_1 = []
 FTV_2 = []
