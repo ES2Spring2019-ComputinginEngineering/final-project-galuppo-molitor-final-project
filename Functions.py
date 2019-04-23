@@ -20,6 +20,9 @@ Race_1, Race_2, Race_3 = List_Creation3(Race_1, Race_2, Race_3, Race)
 HypertensionNeg_BW, HypertensionPos_BW = List_Creation2(HypertensionNeg_BW, HypertensionPos_BW, Hypertension)
 FTV_0, FTV_1, FTV_2, FTV_3, FTV_4 = List_Creation5(FTV_0, FTV_1, FTV_2, FTV_3, FTV_4, FTV)
 UINeg, UIPos = List_Creation2(UINeg, UIPos, UI)
+Normal_BW, Low_BW =List_Creation2(Normal_BW, Low_BW, Low)
+PTL_0, PTL_1, PTL_2, PTL_3 = List_Creation4(PTL_0, PTL_1, PTL_2, PTL_3, PTL)
+All_Birthweights = List_Creation1(All_Birthweights, BWT)
 
 #DATA VISUALIZATION FUNCTIONS - individual risks
 def graphNumerical(x_values, y_values, classification, title): 
@@ -56,6 +59,16 @@ def DensityPlot_3(List1, List2, List3, Label1, Label2, Label3, Title):
     sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
     sns.distplot(List2, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'lightblue', rug = True, label = Label2)
     sns.distplot(List3, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'purple', rug = True, label = Label3)
+    plt.title(Title)
+    plt.xlabel("Birthweight (Grams)")
+    plt.show()
+
+def DensityPlot_4(List1, List2, List3, List4, Label1, Label2, Label3, Label4, Title): 
+    plt.figure()
+    sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
+    sns.distplot(List2, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'lightblue', rug = True, label = Label2)
+    sns.distplot(List3, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'purple', rug = True, label = Label3)
+    sns.distplot(List4, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'lightgreen', rug = True, label = Label4)
     plt.title(Title)
     plt.xlabel("Birthweight (Grams)")
     plt.show()
@@ -110,3 +123,11 @@ def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, 
     data_rows = [mothers,means, medians]
     t = Table(rows = data_rows, names = ("Statistic", "All Datapoints",Label1, Label2, Label3, Label4, Label5))
     print(t)
+    
+#TWO SAMPLE T-TEST FOR SAMPLES OF EQUAL SIZE
+def T_Test_Print(List1, List2): 
+    p_value = stats.ttest_ind(List1, List2, axis = None, equal_var = False)[1]
+    if p_value <= 0.05:
+        print("The two sample t-test on the two approximately normally distributed  curves returns a p-value of", round(p_value,5), ". This p-value confirms a statistically significant difference in the means of these two samples.")
+    else:
+        print("The two sample t-test on the two approximately normally distributed curves returns a p-value of", round(p_value,5), ". This  p-value shows that the difference in the means of these two samples is not statistically significant.")
