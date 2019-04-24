@@ -39,6 +39,8 @@ def graphNumerical(x_values, y_values, classification, title):
     slope, intercept, r_value, p_value, std_err = stats.linregress(x_values, y_values)
     line = slope*x_values + intercept
     plt.plot(x_values, line)
+    plt.ylabel("Birthweight (Grams)")
+    plt.xlabel("Weight of Mother (Pounds)")
     plt.show()
     print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
     
