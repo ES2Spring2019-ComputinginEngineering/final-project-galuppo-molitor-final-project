@@ -33,13 +33,14 @@ def titlePrint(risk):
 def graphNumerical(x_values, y_values, classification, title): 
     plt.figure
     plt.title(title)
-    plt.plot(x_values[classification == 0], y_values[classification == 0], "b.", label = 'Class 0: Condition is False')
-    plt.plot(x_values[classification == 1], y_values[classification == 1], "r.", label = 'Class 1: Condition is True')
+    plt.plot(x_values[classification == 0], y_values[classification == 0], "b.", label = 'Class 0: Normal Birthweight')
+    plt.plot(x_values[classification == 1], y_values[classification == 1], "r.", label = 'Class 1: Low Birthweight')
     plt.legend()
     slope, intercept, r_value, p_value, std_err = stats.linregress(x_values, y_values)
     line = slope*x_values + intercept
     plt.plot(x_values, line)
     plt.show()
+    print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
     
 #def Histogram_4(List1, List2, List3, List4, names, bins):
 #    colors = ['#E69F00', '#56B4E9', '#F0E442', '#009E73']
@@ -105,8 +106,8 @@ def stndDev_BW(List):
         stndDev = round(statistics.stdev(List))
     return stndDev
 
-#def correlationCoefficient(x_values, y_values):
-#    return np.corrcoef(x_values, y_values)
+def correlationCoefficient(x_values, y_values):
+    return np.corrcoef(x_values, y_values)
 
 def desStatsTable_2(ListAll, List1, List2, Label1, Label2, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -168,7 +169,9 @@ def T_Test_Print(List1, List2, title):
     p_value = stats.ttest_ind(List1, List2, axis = None, equal_var = False)[1]
     if p_value <= 0.05:
         print("The two sample t-test on the two approximately normally distributed  curves returns a p-value of", round(p_value,5), ". This p-value confirms a statistically significant difference in the means of these two samples.")
+    elif p_value > 0.05:
+       print("The two sample t-test on the two approximately normally distributed curves returns a p-value of", round(p_value,5), ". This  p-value shows that the difference in the means of these two samples is not statistically significant.")
     else:
-        print("The two sample t-test on the two approximately normally distributed curves returns a p-value of", round(p_value,5), ". This  p-value shows that the difference in the means of these two samples is not statistically significant.")
+        print("The p-value for this data could not be determined as a result of sample size.")
     print("-------------------------------------------------------------------------------------")
     
