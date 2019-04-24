@@ -119,6 +119,7 @@ def desStatsTable_2(ListAll, List1, List2, Label1, Label2, title, parameter):
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, "All Datapoints"))
     print(t)
+    print("-------------------------------------------------------------------------------------")
 
 def desStatsTable_3(ListAll, List1, List2, List3, Label1, Label2, Label3, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -131,6 +132,7 @@ def desStatsTable_3(ListAll, List1, List2, List3, Label1, Label2, Label3, title,
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, Label3, "All Datapoints"))
     print(t)
+    print("-------------------------------------------------------------------------------------")
     
 def desStatsTable_4(ListAll, List1, List2, List3, List4, Label1, Label2, Label3, Label4, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -143,6 +145,7 @@ def desStatsTable_4(ListAll, List1, List2, List3, List4, Label1, Label2, Label3,
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter, Label1, Label2, Label3, Label4, "All Datapoints"))
     print(t)
+    print("-------------------------------------------------------------------------------------")
     
 def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, Label3, Label4, Label5, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -155,6 +158,7 @@ def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, 
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, Label3, Label4, Label5, "All Datapoints"))
     print(t)
+    print("-------------------------------------------------------------------------------------")
     
 #TWO SAMPLE T-TEST FOR SAMPLES OF EQUAL SIZE
 def T_Test_Print(List1, List2): 
