@@ -161,9 +161,14 @@ def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, 
     print("-------------------------------------------------------------------------------------")
     
 #TWO SAMPLE T-TEST FOR SAMPLES OF EQUAL SIZE
-def T_Test_Print(List1, List2): 
+def T_Test_Print(List1, List2, title): 
+    print("-------------------------------------------------------------------------------------")
+    print("T-test Results: ", title)
+    print("-------------------------------------------------------------------------------------")
     p_value = stats.ttest_ind(List1, List2, axis = None, equal_var = False)[1]
     if p_value <= 0.05:
         print("The two sample t-test on the two approximately normally distributed  curves returns a p-value of", round(p_value,5), ". This p-value confirms a statistically significant difference in the means of these two samples.")
     else:
         print("The two sample t-test on the two approximately normally distributed curves returns a p-value of", round(p_value,5), ". This  p-value shows that the difference in the means of these two samples is not statistically significant.")
+    print("-------------------------------------------------------------------------------------")
+    
