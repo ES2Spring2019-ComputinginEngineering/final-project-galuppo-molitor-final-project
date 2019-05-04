@@ -157,4 +157,123 @@ def List_Creation5(List1, List2, List3, List4, List5, Input):
         else: 
             List5.append(BWT[i])
     return(List1, List2, List3, List4, List5)
-    
+
+def Chi_Square_2(Array1, Array2):
+    Count1 = 0
+    Count2 = 0
+    Count3 = 0
+    Count4 = 0
+    List1 = np.array(Array1).tolist()
+    List2 = np.array(Array2).tolist()
+    for i in range(189):
+        if List1[i] == 0 and List2[i] == 0:
+            Count1 += 1
+        elif List1[i] == 0 and List2[i] == 1: 
+            Count2 += 1
+        elif List1[i] == 1 and List2[i] == 0:
+            Count3 += 1
+        else:
+            Count4 += 1
+    a1 = [Count1, Count2]
+    a2 = [Count3, Count4]
+    Chi_Square_Array = np.array([a1,a2])
+    return Chi_Square_Array
+
+def Chi_Square_3(Array1, Array2): 
+    Count1 = 0
+    Count2 = 0
+    Count3 = 0
+    Count4 = 0
+    Count5 = 0
+    Count6 = 0
+    List1 = np.array(Array1).tolist()
+    List2 = np.array(Array2).tolist()
+    for i in range(189):
+        if List1[i] == 0 and List2[i]==1:
+            Count1 += 1
+        elif List1[i] == 0 and List2[i]==2:
+            Count2 += 1
+        elif List1[i] == 0 and List2[i]==3: 
+            Count3 += 1
+        elif List1[i] == 1 and List2[i]==1:
+            Count4 += 1
+        elif List1[i] == 1 and List2[i]==2:
+            Count5 += 1
+        else:
+            Count6 += 1
+    a1 = [Count1, Count2, Count3]
+    a2 = [Count4, Count5, Count6]
+    Chi_Square_Array = np.array([a1,a2])
+    return Chi_Square_Array
+
+def Chi_Square_4(Array1, Array2): 
+    Count1 = 0
+    Count2 = 0
+    Count3 = 0
+    Count4 = 0
+    Count5 = 0
+    Count6 = 0
+    Count7 = 0
+    Count8 = 0
+    List1 = np.array(Array1).tolist()
+    List2 = np.array(Array2).tolist()
+    for i in range(189):
+        if List1[i] == 0 and List2[i]==0:
+            Count1 += 1
+        elif List1[i] == 0 and List2[i]==1:
+            Count2 += 1
+        elif List1[i] == 0 and List2[i]==2: 
+            Count3 += 1
+        elif List1[i] == 0 and List2[i]==3: 
+            Count4 += 1
+        elif List1[i] == 1 and List2[i]==0:
+            Count5 += 1
+        elif List1[i] == 1 and List2[i]==1:
+            Count6 += 1
+        elif List1[i] == 1 and List2[i]==2: 
+            Count7 += 1
+        else:
+            Count8 += 1
+    a1 = [Count1, Count2, Count3, Count4]
+    a2 = [Count5, Count6, Count7, Count8]
+    Chi_Square_Array = np.array([a1,a2])
+    return Chi_Square_Array
+
+def Chi_Square_5(Array1, Array2): 
+    Count1 = 0
+    Count2 = 0
+    Count3 = 0
+    Count4 = 0
+    Count5 = 0
+    Count6 = 0
+    Count7 = 0
+    Count8 = 0
+    Count9 = 0
+    Count10 = 0
+    List1 = np.array(Array1).tolist()
+    List2 = np.array(Array2).tolist()
+    for i in range(189):
+        if List1[i] == 0 and List2[i]==0:
+            Count1 += 1
+        elif List1[i] == 0 and List2[i]==1:
+            Count2 += 1
+        elif List1[i] == 0 and List2[i]==2: 
+            Count3 += 1
+        elif List1[i] == 0 and List2[i]==3: 
+            Count4 += 1
+        elif List1[i] == 0 and List2[i] ==4: 
+            Count5 += 1
+        elif List1[i] == 1 and List2[i]==0:
+            Count6 += 1
+        elif List1[i] == 1 and List2[i]==1:
+            Count7 += 1
+        elif List1[i] == 1 and List2[i]==2: 
+            Count8 += 1
+        elif List1[i] == 1 and List2[i]==3:
+            Count9 += 1
+        else:
+            Count10 += 1
+    a1 = [Count1, Count2, Count3, Count4, Count5]
+    a2 = [Count6, Count7, Count8, Count9, Count10]
+    Chi_Square_Array = np.array([a1,a2])
+    return Chi_Square_Array
