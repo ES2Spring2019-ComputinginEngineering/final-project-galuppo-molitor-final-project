@@ -33,12 +33,12 @@ Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S = Multi_Factor(Neg_UI_Neg
 Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S = Multi_Factor(Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, Hypertension, Smoker, BWT)
 Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H = Multi_Factor(Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H, UI, Hypertension, BWT)
 
-def titlePrint(risk):
-    print("-------------------------------------------------------------------------------------")
-    print('\n', risk, '\n')
+def titlePrint(title):
+    print('\n',"-------------------------------------------------------------------------------------")
+    print('\n', title, '\n')
     print("-------------------------------------------------------------------------------------")
 
-#DATA VISUALIZATION FUNCTIONS - individual risks
+#DATA VISUALIZATION FUNCTIONS - individual variables
 def graphNumerical(x_values, y_values, classification, title): 
     plt.figure
     plt.title(title)
@@ -51,16 +51,6 @@ def graphNumerical(x_values, y_values, classification, title):
     plt.ylabel("Birthweight (Grams)")
     plt.show()
     print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
-    
-#def Histogram_4(List1, List2, List3, List4, names, bins):
-#    colors = ['#E69F00', '#56B4E9', '#F0E442', '#009E73']
-#    plt.hist([List1, List2, List3, List4], bins = bins, color = colors, label = names)
-#    plt.legend()
-#    
-#def Histogram_2(List1, List2, names, bins): 
-#    colors = ['#F0E442', '#009E73'] 
-#    plt.hist([List1, List2], bins=bins, color = colors, label = names)
-#    plt.legend()
 
 def DensityPlot_2(List1, List2, Label1, Label2, Title):
     plt.figure()
@@ -100,7 +90,7 @@ def DensityPlot_5(List1, List2, List3, List4, List5, Label1, Label2, Label3, Lab
     plt.xlabel("Birthweight (Grams)")
     plt.show()
     
-#DESCRIPTIVE STATISTICS FUNCTIONS - individual risks
+#DESCRIPTIVE STATISTICS FUNCTIONS - individual variables
 def mean_BW(List):
     mean = round(np.mean(List),1)
     return mean
@@ -163,16 +153,20 @@ def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, 
     means = 'Mean Birth Weight (grams)', mean_BW(List1), mean_BW(List2), mean_BW(List3), mean_BW(List4), mean_BW(List5), mean_BW(ListAll)
     medians = 'Median Birth Weight (grams)', median_BW(List1), median_BW(List2), median_BW(List3), median_BW(List4), median_BW(List5), median_BW(ListAll)
     stndDevs = 'Standard Deviation (grams)', stndDev_BW(List1), stndDev_BW(List2), stndDev_BW(List3), stndDev_BW(List4), stndDev_BW(List5), stndDev_BW(ListAll)
-    data_rows = [mothers,means, medians, stndDevs]
+    data_rows = [mothers,means,medians,stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, Label3, Label4, Label5, "All Datapoints"))
     print(t)
     
 #TWO SAMPLE T-TEST FOR SAMPLES OF EQUAL SIZE
+def T_test(List1, List2):
+    p_value = stats.ttest_ind(List1, List2, axis = None, equal_var = False)[1]
+    return p_value
+    
 def T_Test_Print(List1, List2, title): 
     print("-------------------------------------------------------------------------------------")
     print("T-test Results: ", title)
     print("-------------------------------------------------------------------------------------")
-    p_value = stats.ttest_ind(List1, List2, axis = None, equal_var = False)[1]
+    p_value = T_test(List1, List2)
     if p_value <= 0.05:
         print("The two sample t-test on the two approximately normally distributed  curves returns a p-value of", round(p_value,5), ". This p-value confirms a statistically significant difference in the means of these two samples.")
     elif p_value > 0.05:
@@ -180,9 +174,13 @@ def T_Test_Print(List1, List2, title):
     else:
         print("The p-value for this data could not be determined as a result of sample size.")
     
-def Chi_Square_Test(Array, Title, Variable1, Variable2):
+def Chi_Square_Test(Array):
+    chi2_stat, p_val, dof, ex = stats.chi2_contingency(Array)
+    return p_val
+    
+def Chi_Square_Test_Print(Array, title, Variable1, Variable2):
     print("-------------------------------------------------------------------------------------")
-    print("Chi-Square Test Results: ", Title)
+    print("Chi-Square Test Results: ", title)
     print("-------------------------------------------------------------------------------------")
     chi2_stat, p_val, dof, ex = stats.chi2_contingency(Array)
     print("The Chi-Squre Test was preformed with", dof, "degrees of freedom.")
@@ -190,4 +188,45 @@ def Chi_Square_Test(Array, Title, Variable1, Variable2):
         print("The Chi-Square Test on", Variable1, "and", Variable2, "returned a p-value of" ,round(p_val,5) , ". Therefore, these two variables are not independent of each other based and have a relationship based on the Chi-Square Test.")
     else: 
         print("The Chi-Square Test on", Variable1, "and", Variable2, "returned a p-value of" ,round(p_val,5), ". Therefore, these two variables are independent based on the Chi-Square Test.")
+    
+sigB = []
+sigT = []
+sigC = []
+sigN = []
+    
+def Significance(Label,List1,List2,Array):
+    if T_test(List1,List2) <= 0.05 and Chi_Square_Test(Array) <= 0.05:
+        sigB.append(Label)
+    elif T_test(List1,List2) <= 0.05:
+        sigT.append(Label)
+    elif Chi_Square_Test(Array) <= 0.05:
+        sigC.append(Label)
+    else:
+        sigN.append(Label)
+
+def Print_Significance():
+    print("-------------------------------------------------------------------------------------")
+    print("Significance")
+    print("-------------------------------------------------------------------------------------")
+    print("The variables that were found to be statistically significant in both the T-test and the Chi Square Test are:")
+    print(sigB, '\n')
+    print("The variables that were found to be statistically significant in the T-test but not the Chi Square Test are:")
+    print(sigT, '\n')
+    print("The variables that were found to be statistically significant in the Chi Square Test but not the T-Test are:")
+    print(sigC, '\n')
+    print("The variables that were found to be not statistically significant in both the T-test and the Chi Square Test are:")
+    print(sigN, '\n')
+    
+def Effect(ListAll, Var1,List1,Var2, List2, Var3, List3, Var4, List4):
+    print("-------------------------------------------------------------------------------------")
+    print("Average Effect on Birthweight")
+    print("-------------------------------------------------------------------------------------")
+    print("Considering only the variables that were found to be statistically significant for both the T-test and the Chi Square Test,")
+    avgChange1 = Var1, (round(mean_BW(List1) - mean_BW(ListAll),1))
+    avgChange2 = Var2,(round(mean_BW(List2) - mean_BW(ListAll),1))
+    avgChange3 = Var3,(round(mean_BW(List3) - mean_BW(ListAll),1))
+    avgChange4 = Var4,(round(mean_BW(List4) - mean_BW(ListAll),1))
+    datarows = [avgChange1,avgChange2,avgChange3,avgChange4]
+    t = Table(rows = datarows, names = ('Variable','Average Change in Birthweight (grams)'))
+    print(t)
     
