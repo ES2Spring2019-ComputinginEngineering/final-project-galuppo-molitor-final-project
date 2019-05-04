@@ -29,6 +29,9 @@ UI_Low = Chi_Square_2(Low, UI)
 Race_Low = Chi_Square_3(Low, Race)
 PTL_Low = Chi_Square_4(Low, PTL)
 FTV_Low = Chi_Square_5(Low, FTV)
+Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S = Multi_Factor(Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, UI, Smoker, BWT)
+Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S = Multi_Factor(Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, Hypertension, Smoker, BWT)
+Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H = Multi_Factor(Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H, UI, Hypertension, BWT)
 
 def titlePrint(risk):
     print("-------------------------------------------------------------------------------------")
