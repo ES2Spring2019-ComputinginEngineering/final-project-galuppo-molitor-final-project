@@ -23,6 +23,12 @@ UINeg, UIPos = List_Creation2(UINeg, UIPos, UI)
 Normal_BW, Low_BW =List_Creation2(Normal_BW, Low_BW, Low)
 PTL_0, PTL_1, PTL_2, PTL_3 = List_Creation4(PTL_0, PTL_1, PTL_2, PTL_3, PTL)
 All_Birthweights = List_Creation1(All_Birthweights, BWT)
+Smoker_Low = Chi_Square_2(Low, Smoker)
+Hypertension_Low = Chi_Square_2(Low, Hypertension)
+UI_Low = Chi_Square_2(Low, UI)
+Race_Low = Chi_Square_3(Low, Race)
+PTL_Low = Chi_Square_4(Low, PTL)
+FTV_Low = Chi_Square_5(Low, FTV)
 
 def titlePrint(risk):
     print("-------------------------------------------------------------------------------------")
@@ -40,7 +46,6 @@ def graphNumerical(x_values, y_values, classification, title):
     line = slope*x_values + intercept
     plt.plot(x_values, line)
     plt.ylabel("Birthweight (Grams)")
-    plt.xlabel("Weight of Mother (Pounds)")
     plt.show()
     print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
     
@@ -122,7 +127,6 @@ def desStatsTable_2(ListAll, List1, List2, Label1, Label2, title, parameter):
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, "All Datapoints"))
     print(t)
-    print("-------------------------------------------------------------------------------------")
 
 def desStatsTable_3(ListAll, List1, List2, List3, Label1, Label2, Label3, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -135,7 +139,6 @@ def desStatsTable_3(ListAll, List1, List2, List3, Label1, Label2, Label3, title,
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, Label3, "All Datapoints"))
     print(t)
-    print("-------------------------------------------------------------------------------------")
     
 def desStatsTable_4(ListAll, List1, List2, List3, List4, Label1, Label2, Label3, Label4, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -148,7 +151,6 @@ def desStatsTable_4(ListAll, List1, List2, List3, List4, Label1, Label2, Label3,
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter, Label1, Label2, Label3, Label4, "All Datapoints"))
     print(t)
-    print("-------------------------------------------------------------------------------------")
     
 def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, Label3, Label4, Label5, title, parameter):
     print("-------------------------------------------------------------------------------------")
@@ -161,7 +163,6 @@ def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, 
     data_rows = [mothers,means, medians, stndDevs]
     t = Table(rows = data_rows, names = (parameter,Label1, Label2, Label3, Label4, Label5, "All Datapoints"))
     print(t)
-    print("-------------------------------------------------------------------------------------")
     
 #TWO SAMPLE T-TEST FOR SAMPLES OF EQUAL SIZE
 def T_Test_Print(List1, List2, title): 
@@ -175,5 +176,15 @@ def T_Test_Print(List1, List2, title):
        print("The two sample t-test on the two approximately normally distributed curves returns a p-value of", round(p_value,5), ". This  p-value shows that the difference in the means of these two samples is not statistically significant.")
     else:
         print("The p-value for this data could not be determined as a result of sample size.")
+    
+def Chi_Square_Test(Array, Title, Variable1, Variable2):
     print("-------------------------------------------------------------------------------------")
+    print("Chi-Square Test Results: ", Title)
+    print("-------------------------------------------------------------------------------------")
+    chi2_stat, p_val, dof, ex = stats.chi2_contingency(Array)
+    print("The Chi-Squre Test was preformed with", dof, "degrees of freedom.")
+    if p_val < 0.05: 
+        print("The Chi-Square Test on", Variable1, "and", Variable2, "returned a p-value of" ,round(p_val,5) , ". Therefore, these two variables are not independent of each other based and have a relationship based on the Chi-Square Test.")
+    else: 
+        print("The Chi-Square Test on", Variable1, "and", Variable2, "returned a p-value of" ,round(p_val,5), ". Therefore, these two variables are independent based on the Chi-Square Test.")
     
