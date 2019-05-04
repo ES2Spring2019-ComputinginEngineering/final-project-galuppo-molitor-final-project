@@ -2,9 +2,6 @@
 make sure it runs correctly when someone downloads your repository. You 
 might want to test this on a classmates computer to be sure it works!"""
 
-# This files should not contain any function defitions
-
-
 # IMPORT STATEMENTS
 import numpy as np
 import csv
@@ -68,3 +65,25 @@ T_Test_Print(FTV_2, FTV_1+FTV_0+FTV_3+FTV_4, '2 Medical Consultations During Fir
 T_Test_Print(FTV_3, FTV_1+FTV_2+FTV_0+FTV_4, '3 Medical Consultations During First Trimester')
 T_Test_Print(FTV_4, FTV_1+FTV_2+FTV_3+FTV_0, '4 Medical Consultations During First Trimester')
 Chi_Square_Test(FTV_Low, "Low Birthweight and Number of Medical Consultations During First Trimester", "Low Birthweight", "Number of Medical Consultations During First Trimester")
+
+titlePrint("Comparisons of Multiple Factors")
+titlePrint("Uterine Irratibility and Smoking During Pregnancy")
+DensityPlot_4(Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'No History of UI, Non-Smoker', 'No History of UI, Smoker', 'History of UI, Non-Smoker', 'History of UI, Smoker', 'Uterine Irratibility and Smoking')
+desStatsTable_4(BWT,Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'Uterine Irratibility and Smoking', 'UI and Smoking')
+T_Test_Print(Neg_UI_Pos_S, Neg_UI_Neg_S, 'No History of Uterine Irratibiility, Smoker during Pregnancy')
+T_Test_Print(Pos_UI_Neg_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Non-Smoker during Pregnancy')
+T_Test_Print(Pos_UI_Pos_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Smoker during Pregnancy')
+
+titlePrint("Hypertension and Smoking During Pregnancy")
+DensityPlot_4(Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, 'No History of Hypertension, Non-Smoker', 'No History of Hypertension, Smoker', 'History of Hypertension, Non-Smoker', 'History of Hypertension, Smoker', 'History of Hypertension and Smoking During Pregnancy')
+desStatsTable_4(BWT, Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, 'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'History of Hypertension and Smoking During Pregnancy', 'Hypertesion and Smoking')
+T_Test_Print(Neg_H_Pos_S, Neg_H_Neg_S, 'No History of Hypertension, Smoker During Pregnancy')
+T_Test_Print(Pos_H_Neg_S, Neg_H_Neg_S, 'History of Hypertension, Non-Smoker During Pregnancy')
+T_Test_Print(Pos_H_Pos_S, Neg_H_Neg_S, 'History of Hypertension, Smoker During Pregnancy')
+
+titlePrint("Uterine Irritability and History of Hypertension")
+DensityPlot_4(Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H, 'No History of UI or Hypertension', 'No History of UI, History of Hypertension', 'History of UI, No History of Hypertension', 'History of UI and Hypertension', 'History of Hypertension and Uterine Irritability')
+desStatsTable_4(BWT, Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H,'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'History of Hypertension and Uterine Irritability', 'Uterine Irritability and Smoking')
+T_Test_Print(Neg_UI_Pos_H, Neg_UI_Neg_H, 'No History of Uterine Irritability, History of Hypertension')
+T_Test_Print(Pos_UI_Neg_H, Neg_UI_Neg_H, 'History of Uterine Irritability, No Hisitory of Hypertension')
+T_Test_Print(Pos_UI_Pos_H, Neg_UI_Neg_H, 'History of Uterine Irritabiility and Hypertension')
