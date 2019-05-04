@@ -102,6 +102,35 @@ def List_Creation2(List1, List2, Input):
             List2.append(BWT[i])
     return List1, List2
 
+Neg_UI_Neg_S = []
+Neg_UI_Pos_S = []
+Pos_UI_Neg_S = []
+Pos_UI_Pos_S = []
+
+Neg_H_Neg_S = []
+Neg_H_Pos_S = []
+Pos_H_Neg_S = []
+Pos_H_Pos_S = []
+
+Neg_UI_Neg_H = []
+Neg_UI_Pos_H = []
+Pos_UI_Neg_H = []
+Pos_UI_Pos_H = []
+
+def Multi_Factor(List1, List2, List3, List4, Input1, Input2, Input3):
+    Input1_List = np.array(Input1).tolist()
+    Input2_List = np.array(Input2).tolist()
+    for i in range(189): 
+        if Input1_List[i] == 0 and Input2_List[i] == 0: 
+            List1.append(Input3[i])
+        elif Input1_List[i] == 0 and Input2_List[i] == 1:
+            List2.append(Input3[i])
+        elif Input1_List[i] == 1 and Input2_List[i] == 0:
+            List3.append(Input3[i])
+        else:
+            List4.append(Input3[i])
+    return List1, List2, List3, List4
+
 Race_1 = []
 Race_2 = []
 Race_3 = []
@@ -277,3 +306,4 @@ def Chi_Square_5(Array1, Array2):
     a2 = [Count6, Count7, Count8, Count9, Count10]
     Chi_Square_Array = np.array([a1,a2])
     return Chi_Square_Array
+    
