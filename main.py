@@ -15,26 +15,29 @@ titlePrint("There are eight different variables to be considered as factors obse
 
 titlePrint("Age of Mother")
 graphNumerical(Age, BWT, Low, 'Graph of Age on Birth Weight')
+DensityPlot_2(Normal_Ages, Low_Ages, 'Ages of Mothers with Normal Birthweight Babies',  'Ages of Mothers with Low Birthweight Babies', 'Density Curve: Age of Mother', 'Age of Mother')
+T_Test_Print(Normal_Ages, Low_Ages, 'Age of Mother')
 
 titlePrint("Normal Weight of Mother")
 graphNumerical(LWT, BWT, Low, 'Graph of Normal Weight of Mother on Birth Weight')
-
+DensityPlot_2(Normal_NW, Low_NW, 'Normal Weight of  Mother with a Normal Birthweight', 'Normal Weight of a Mother with Low Birthweight', 'Density Curve: Normal Weight of Mother', 'Normal Weight of Mother')
+T_Test_Print(Normal_NW, Low_NW, 'Normal Weight of Mother')
 titlePrint("Smoking During Pregnancy")
-DensityPlot_2(NonSmoker_Birthweights, Smoker_Birthweights, 'Non-Smokers', 'Smokers', 'Density Curve: Smoking During Pregnancy')
+DensityPlot_2(NonSmoker_Birthweights, Smoker_Birthweights, 'Non-Smokers', 'Smokers', 'Density Curve: Smoking During Pregnancy', 'Birthweight (Grams)')
 desStatsTable_2(BWT, NonSmoker_Birthweights, Smoker_Birthweights, 'Non-Smokers', 'Smokers','Smoking During Pregnancy', 'Smoking Status')
 T_Test_Print(NonSmoker_Birthweights, Smoker_Birthweights, 'Smoking During Pregnancy')
 Chi_Square_Test_Print(Smoker_Low, "Low Birthweight and Smoking", "Low Birthweight", "Smoking")
 Significance("Smoking During Pregnancy",NonSmoker_Birthweights, Smoker_Birthweights,Smoker_Low)
 
 titlePrint("Medical History of Hypertension")
-DensityPlot_2(HypertensionNeg_BW, HypertensionPos_BW, 'No History of Hypertension', 'History of Hypertension', 'Density Curve: Hypertension Birthweights')
+DensityPlot_2(HypertensionNeg_BW, HypertensionPos_BW, 'No History of Hypertension', 'History of Hypertension', 'Density Curve: Hypertension Birthweights', 'Birthweight (Grams)')
 desStatsTable_2(BWT, HypertensionNeg_BW, HypertensionPos_BW, 'Negative', 'Positive','Hypertension', 'History of Hypertension')
 T_Test_Print(HypertensionNeg_BW, HypertensionPos_BW,'Hypertension')
 Chi_Square_Test_Print(Hypertension_Low, "Low Birthweight and Hypertension", "Low Birthweight", "Hypertension")
 Significance("Medical History of Hypertension",HypertensionNeg_BW, HypertensionPos_BW,Hypertension_Low)
 
 titlePrint("Uterine Irritability")
-DensityPlot_2(UIPos, UINeg, 'History of Uterine Irritability', 'No History of Uterine Irratibility', 'Density Curve: Uterine Irratibility Birthweights')
+DensityPlot_2(UIPos, UINeg, 'History of Uterine Irritability', 'No History of Uterine Irratibility', 'Density Curve: Uterine Irratibility Birthweights','Birthweight (Grams)')
 desStatsTable_2(BWT, UIPos, UINeg, 'Positive', 'Negative', 'Uterine Irratibility', 'History of Uterine Irritability')
 T_Test_Print(UINeg, UIPos, 'Uterine Irratibility')
 Chi_Square_Test_Print(UI_Low, "Low Birthweight and Uterine Irritability", "Low Birthweight", "Uterine Irritability")
@@ -83,16 +86,14 @@ titlePrint("Summary of Variable Effect on Birthweight")
 Print_Significance()
 Effect(BWT,'Smoking During Pregnancy',Smoker_Birthweights,'Uterine Irritability', UIPos, 'No Premature Births in Medical History', PTL_0, 'One Premature Birth in Medical History', PTL_1)
 
-###############################################################################################
-#
-#titlePrint("Comparisons of Multiple Factors")
-#titlePrint("Uterine Irratibility and Smoking During Pregnancy")
-#DensityPlot_4(Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'No History of UI, Non-Smoker', 'No History of UI, Smoker', 'History of UI, Non-Smoker', 'History of UI, Smoker', 'Uterine Irratibility and Smoking')
-#desStatsTable_4(BWT,Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'Uterine Irratibility and Smoking', 'UI and Smoking')
-#T_Test_Print(Neg_UI_Pos_S, Neg_UI_Neg_S, 'No History of Uterine Irratibiility, Smoker during Pregnancy')
-#T_Test_Print(Pos_UI_Neg_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Non-Smoker during Pregnancy')
-#T_Test_Print(Pos_UI_Pos_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Smoker during Pregnancy')
-#
+titlePrint("Comparisons of Multiple Factors")
+titlePrint("Uterine Irratibility and Smoking During Pregnancy")
+DensityPlot_4(Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'No History of UI, Non-Smoker', 'No History of UI, Smoker', 'History of UI, Non-Smoker', 'History of UI, Smoker', 'Uterine Irratibility and Smoking')
+desStatsTable_4(BWT,Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'Uterine Irratibility and Smoking', 'UI and Smoking')
+T_Test_Print(Neg_UI_Pos_S, Neg_UI_Neg_S, 'No History of Uterine Irratibiility, Smoker during Pregnancy')
+T_Test_Print(Pos_UI_Neg_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Non-Smoker during Pregnancy')
+T_Test_Print(Pos_UI_Pos_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Smoker during Pregnancy')
+
 #titlePrint("Hypertension and Smoking During Pregnancy")
 #DensityPlot_4(Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, 'No History of Hypertension, Non-Smoker', 'No History of Hypertension, Smoker', 'History of Hypertension, Non-Smoker', 'History of Hypertension, Smoker', 'History of Hypertension and Smoking During Pregnancy')
 #desStatsTable_4(BWT, Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, 'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'History of Hypertension and Smoking During Pregnancy', 'Hypertesion and Smoking')
