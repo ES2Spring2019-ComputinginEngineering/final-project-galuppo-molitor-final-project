@@ -82,10 +82,6 @@ Significance("Two Medical Consultations During First Trimester",FTV_2, FTV_1+FTV
 Significance("Three Medical Consultations During First Trimester",FTV_3, FTV_1+FTV_2+FTV_0+FTV_4,FTV_Low)
 Significance("Four Medical Consultations During First Trimester",FTV_4, FTV_1+FTV_2+FTV_3+FTV_0,FTV_Low)
 
-titlePrint("Summary of Variable Effect on Birthweight")
-Print_Significance()
-Effect(BWT,'Smoking During Pregnancy',Smoker_Birthweights,'Uterine Irritability', UIPos, 'No Premature Births in Medical History', PTL_0, 'One Premature Birth in Medical History', PTL_1)
-
 titlePrint("Comparisons of Multiple Factors")
 titlePrint("Uterine Irratibility and Smoking During Pregnancy")
 DensityPlot_4(Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, 'No History of UI, Non-Smoker', 'No History of UI, Smoker', 'History of UI, Non-Smoker', 'History of UI, Smoker', 'Uterine Irratibility and Smoking')
@@ -94,16 +90,6 @@ T_Test_Print(Neg_UI_Pos_S, Neg_UI_Neg_S, 'No History of Uterine Irratibiility, S
 T_Test_Print(Pos_UI_Neg_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Non-Smoker during Pregnancy')
 T_Test_Print(Pos_UI_Pos_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Smoker during Pregnancy')
 
-#titlePrint("Hypertension and Smoking During Pregnancy")
-#DensityPlot_4(Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, 'No History of Hypertension, Non-Smoker', 'No History of Hypertension, Smoker', 'History of Hypertension, Non-Smoker', 'History of Hypertension, Smoker', 'History of Hypertension and Smoking During Pregnancy')
-#desStatsTable_4(BWT, Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, 'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'History of Hypertension and Smoking During Pregnancy', 'Hypertesion and Smoking')
-#T_Test_Print(Neg_H_Pos_S, Neg_H_Neg_S, 'No History of Hypertension, Smoker During Pregnancy')
-#T_Test_Print(Pos_H_Neg_S, Neg_H_Neg_S, 'History of Hypertension, Non-Smoker During Pregnancy')
-#T_Test_Print(Pos_H_Pos_S, Neg_H_Neg_S, 'History of Hypertension, Smoker During Pregnancy')
-
-#titlePrint("Uterine Irritability and History of Hypertension")
-#DensityPlot_4(Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H, 'No History of UI or Hypertension', 'No History of UI, History of Hypertension', 'History of UI, No History of Hypertension', 'History of UI and Hypertension', 'History of Hypertension and Uterine Irritability')
-#desStatsTable_4(BWT, Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H,'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'History of Hypertension and Uterine Irritability', 'Uterine Irritability and Smoking')
-#T_Test_Print(Neg_UI_Pos_H, Neg_UI_Neg_H, 'No History of Uterine Irritability, History of Hypertension')
-#T_Test_Print(Pos_UI_Neg_H, Neg_UI_Neg_H, 'History of Uterine Irritability, No Hisitory of Hypertension')
-#T_Test_Print(Pos_UI_Pos_H, Neg_UI_Neg_H, 'History of Uterine Irritabiility and Hypertension')
+titlePrint("Summary of Variable Effect on Birthweight")
+Print_Significance()
+Effect(BWT,'Smoking During Pregnancy',Smoker_Birthweights,'Uterine Irritability', UIPos, 'No Premature Births in Medical History', PTL_0, 'One Premature Birth in Medical History', PTL_1)
