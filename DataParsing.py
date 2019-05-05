@@ -88,18 +88,22 @@ UIPos = []
 Low_BW = []
 Normal_BW = []
 All_Birthweights = []
+Low_Ages = []
+Normal_Ages = []
+Low_NW = []
+Normal_NW = []
 
 def List_Creation1(List1, Input): 
     List1 = np.array(Input).tolist()
     return List1
 
-def List_Creation2(List1, List2, Input): 
-    Input_List = np.array(Input).tolist()
+def List_Creation2(List1, List2, Input1, Paramater): 
+    Input_List = np.array(Input1).tolist()
     for i in range(189): 
         if Input_List[i] == 0: 
-            List1.append(BWT[i])
+            List1.append(Paramater[i])
         else: 
-            List2.append(BWT[i])
+            List2.append(Paramater[i])
     return List1, List2
 
 Neg_UI_Neg_S = []
