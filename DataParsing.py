@@ -298,7 +298,7 @@ Neg_UI_Pos_H = []
 Pos_UI_Neg_H = []
 Pos_UI_Pos_H = []
 
-#Multi_Factor separates two
+#Multi_Factor separates two input arrays into four lists based on data from two categories. 
 def Multi_Factor(List1, List2, List3, List4, Input1, Input2, Paramater):
     Input1_List = np.array(Input1).tolist()
     Input2_List = np.array(Input2).tolist()
