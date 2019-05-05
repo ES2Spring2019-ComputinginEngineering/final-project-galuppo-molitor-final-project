@@ -5,6 +5,7 @@ Created on Tue Apr 16 15:40:00 2019
 
 @author: victoriamolitor
 """
+#IMPORT STATEMENTS
 from matplotlib import pylab
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,8 +13,9 @@ from numpy import arange, array, ones
 from scipy import stats 
 from astropy.table import Table
 import statistics
+from DataParsing import *
 
-from DataParsing import * 
+#LIST AND ARRAY CREATION 
 Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
 NonSmoker_Birthweights, Smoker_Birthweights = List_Creation2(NonSmoker_Birthweights, Smoker_Birthweights, Smoker, BWT)
 Race_1, Race_2, Race_3 = List_Creation3(Race_1, Race_2, Race_3, Race, BWT)
@@ -41,6 +43,7 @@ def titlePrint(title):
     print("-------------------------------------------------------------------------------------")
 
 #DATA VISUALIZATION FUNCTIONS - individual variables
+#Creates a scatter plot with different colored points representing different classifications. 
 def graphNumerical(x_values, y_values, classification, title): 
     plt.figure
     plt.title(title)
@@ -54,6 +57,7 @@ def graphNumerical(x_values, y_values, classification, title):
     plt.show()
     print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
 
+#Creates a density plot with two curves 
 def DensityPlot_2(List1, List2, Label1, Label2, Title, AxisLabel):
     plt.figure()
     sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
