@@ -1,9 +1,8 @@
 # Analysis and Visualization of Birthweight Data
 
-The objective of this project was to create a tool for visualizing and analyzing a dataset through skills in python.
-This tool would allow one to take in a complex, large, and multidimensional set of data and make it more understandable and easily visualized graphically, also while testing for correlation between different variables and the outcome.
-The dataset we chose to demonstate this on considers the factors that propose risk on birth weight, giving the project an interesting biomedical application.
-This particular dataset was strong in that it had a large number of datapoints (~200) and considered many different associated risks observable in a pregnant mothers that can be compared statistically.
+The objective of this project was to create a tool for visualizing and analyzing a complex, large, and multidimensional dataset through skills in python to make it more understandable with graphing, statistics, and significance testing.
+
+The dataset we chose to demonstate this on considers the factors that propose risk on birth weight, giving the project an interesting biomedical application. This particular dataset was strong in that it had a large number of datapoints (~200) and considered many different associated risks observable in a pregnant mothers that can be compared statistically.
 
 These variables included:
 - Mother’s age
@@ -37,10 +36,12 @@ and summary of results on this dataset - no further user interaction is necessar
 
 ### DataParsing.py
 This file parses through the imported csv file and formats it into usable lists and arrays that are used in future functions.
+
 *Libraries: Numpy, Matplotlib, Seaborn*
 
 ### Functions.py
 This file creates all the necessary functions for graphing of data, statistical analysis, significance testing, summarizing of results, and formatting of outputs.
+
 *Libraries: Numpy, Matplotlib, Scipy, Astropy, Statistics*
 
 ### Main.py
