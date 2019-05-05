@@ -100,7 +100,7 @@ T_Test_Print(Pos_UI_Pos_S, Neg_UI_Neg_S, 'History of Uterine Irratibiility, Smok
 #T_Test_Print(Neg_H_Pos_S, Neg_H_Neg_S, 'No History of Hypertension, Smoker During Pregnancy')
 #T_Test_Print(Pos_H_Neg_S, Neg_H_Neg_S, 'History of Hypertension, Non-Smoker During Pregnancy')
 #T_Test_Print(Pos_H_Pos_S, Neg_H_Neg_S, 'History of Hypertension, Smoker During Pregnancy')
-#
+
 #titlePrint("Uterine Irritability and History of Hypertension")
 #DensityPlot_4(Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H, 'No History of UI or Hypertension', 'No History of UI, History of Hypertension', 'History of UI, No History of Hypertension', 'History of UI and Hypertension', 'History of Hypertension and Uterine Irritability')
 #desStatsTable_4(BWT, Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H,'Neg/Neg', 'Neg/Pos', 'Pos/Neg', 'Pos/Pos', 'History of Hypertension and Uterine Irritability', 'Uterine Irritability and Smoking')
