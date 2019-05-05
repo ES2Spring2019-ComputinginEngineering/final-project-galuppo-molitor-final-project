@@ -15,12 +15,12 @@ import statistics
 
 from DataParsing import * 
 Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
-NonSmoker_Birthweights, Smoker_Birthweights = List_Creation2(NonSmoker_Birthweights, Smoker_Birthweights, Smoker)
+NonSmoker_Birthweights, Smoker_Birthweights = List_Creation2(NonSmoker_Birthweights, Smoker_Birthweights, Smoker, BWT)
 Race_1, Race_2, Race_3 = List_Creation3(Race_1, Race_2, Race_3, Race)
-HypertensionNeg_BW, HypertensionPos_BW = List_Creation2(HypertensionNeg_BW, HypertensionPos_BW, Hypertension)
+HypertensionNeg_BW, HypertensionPos_BW = List_Creation2(HypertensionNeg_BW, HypertensionPos_BW, Hypertension, BWT)
 FTV_0, FTV_1, FTV_2, FTV_3, FTV_4 = List_Creation5(FTV_0, FTV_1, FTV_2, FTV_3, FTV_4, FTV)
-UINeg, UIPos = List_Creation2(UINeg, UIPos, UI)
-Normal_BW, Low_BW =List_Creation2(Normal_BW, Low_BW, Low)
+UINeg, UIPos = List_Creation2(UINeg, UIPos, UI, BWT)
+Normal_BW, Low_BW =List_Creation2(Normal_BW, Low_BW, Low, BWT)
 PTL_0, PTL_1, PTL_2, PTL_3 = List_Creation4(PTL_0, PTL_1, PTL_2, PTL_3, PTL)
 All_Birthweights = List_Creation1(All_Birthweights, BWT)
 Smoker_Low = Chi_Square_2(Low, Smoker)
@@ -32,6 +32,8 @@ FTV_Low = Chi_Square_5(Low, FTV)
 Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S = Multi_Factor(Neg_UI_Neg_S, Neg_UI_Pos_S, Pos_UI_Neg_S, Pos_UI_Pos_S, UI, Smoker, BWT)
 Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S = Multi_Factor(Neg_H_Neg_S, Neg_H_Pos_S, Pos_H_Neg_S, Pos_H_Pos_S, Hypertension, Smoker, BWT)
 Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H = Multi_Factor(Neg_UI_Neg_H, Neg_UI_Pos_H, Pos_UI_Neg_H, Pos_UI_Pos_H, UI, Hypertension, BWT)
+Normal_Ages, Low_Ages = List_Creation2(Normal_Ages, Low_Ages, Low, Age)
+Normal_NW, Low_NW = List_Creation2(Normal_NW, Low_NW, Low, LWT)
 
 def titlePrint(title):
     print('\n',"-------------------------------------------------------------------------------------")
@@ -52,12 +54,12 @@ def graphNumerical(x_values, y_values, classification, title):
     plt.show()
     print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
 
-def DensityPlot_2(List1, List2, Label1, Label2, Title):
+def DensityPlot_2(List1, List2, Label1, Label2, Title, AxisLabel):
     plt.figure()
     sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
     sns.distplot(List2, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'lightblue', rug = True, label = Label2)
     plt.title(Title)
-    plt.xlabel("Birthweight (Grams)")
+    plt.xlabel(AxisLabel)
     plt.show()
     
 def DensityPlot_3(List1, List2, List3, Label1, Label2, Label3, Title): 
@@ -101,7 +103,7 @@ def median_BW(List):
 
 def stndDev_BW(List):
     if len(List) < 2:
-        stndDev = "N/a"
+        stndDev = "N/A"
     if len(List)>= 2:
         stndDev = round(statistics.stdev(List))
     return stndDev
