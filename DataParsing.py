@@ -31,7 +31,7 @@ FTV = np.zeros((rows,))
 BWT = np.zeros((rows,))
 BWT_List = []
 
-def readDataFile():
+def readDataFile(): #This function parses data from a csv into numpy arrays. 
     Race = np.zeros((rows,))
     line_count = 0
     index = 0
@@ -52,7 +52,7 @@ def readDataFile():
             BWT_List.append(row[10])
             index += 1
             line_count += 1
-    for i in Low_List: 
+    for i in Low_List: #The categorical variables are parsed in as "TRUE" or "FALSE" and are converted to 0 and 1 in this for loop. 
         if i == 'FALSE': #False Low Birthweight values are labeled 0
             Low_Updated.append(0)
         else: #True Low Birthweight Values are labeled 1
@@ -63,20 +63,20 @@ def readDataFile():
         else: #If the Mother is a smoker, a value of 1 is stored
             Smoker_Updated.append(1) 
     for i in Hypertension_List: 
-        if i == 'FALSE': #If the Mother does not have Hypertension, a value of 0 is stored
+        if i == 'FALSE': #If the Mother does not have a history of hypertension, a value of 0 is stored
             Hypertension_Updated.append(0)
-        else: #If the Mother has Hypertension, a value of 1 is stored
+        else: #If the Mother has a history of hypertension, a value of 1 is stored
             Hypertension_Updated.append(1)
     for i in UI_List:
         if i == 'FALSE':
-            UI_Updated.append(0)
+            UI_Updated.append(0) #if the mother has no history of uterine irritability, a value of 0 is stored
         else: 
-            UI_Updated.append(1)
+            UI_Updated.append(1)#if the mother has a history of uterine irritability, a value of 1 is stored
     Low = np.array(Low_Updated)
     Smoker = np.array(Smoker_Updated)
     Hypertension = np.array(Hypertension_Updated)
     UI = np.array(UI_Updated)
-    return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT 
+    return Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT #Arrays with data for each variabal are returned
 
 #HISTOGRAM AND DENSITY PLOT DATA SEPARATION 
 HypertensionPos_BW = []
@@ -93,15 +93,15 @@ Normal_Ages = []
 Low_NW = []
 Normal_NW = []
 
-def List_Creation1(List1, Input): 
+def List_Creation1(List1, Input): #Takes in an array as Input and returns a list with the same values
     List1 = np.array(Input).tolist()
     return List1
 
-def List_Creation2(List1, List2, Input1, Paramater): 
-    Input_List = np.array(Input1).tolist()
+def List_Creation2(List1, List2, Input, Paramater): #Takes in an array as Input1 and returns two lists with values separated based on the categorical factor and the paramater. 
+    Input_List = np.array(Input).tolist()
     for i in range(189): 
         if Input_List[i] == 0: 
-            List1.append(Paramater[i])
+            List1.append(Paramater[i]) #In this case, the paramater used was birth weight, and these values are separated based on a category. 
         else: 
             List2.append(Paramater[i])
     return List1, List2
@@ -109,16 +109,16 @@ def List_Creation2(List1, List2, Input1, Paramater):
 Race_1 = []
 Race_2 = []
 Race_3 = []
-def List_Creation3(List1, List2, List3, Input):
-    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
+#List_Creation3, List_Creation4, and List_Creation5 create the same lists for variables with a different number of categories.
+def List_Creation3(List1, List2, List3, Input, Paramater):
     Input_List = np.array(Input).tolist()
     for i in range(189):
         if Input_List[i] == 1:
-            List1.append(BWT[i])
+            List1.append(Paramater[i])
         elif Input_List[i] == 2: 
-            List2.append(BWT[i])
+            List2.append(Paramater[i])
         else:
-            List3.append(BWT[i])
+            List3.append(Paramater[i])
     return List1, List2, List3
     
 PTL_0 = []
@@ -126,18 +126,18 @@ PTL_1 = []
 PTL_2 = []
 PTL_3 = []
 
-def List_Creation4(List1, List2, List3, List4, Input): 
+def List_Creation4(List1, List2, List3, List4, Input, Paramater): 
     Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
     Input_List = np.array(Input).tolist()
     for i in range(189):
         if Input_List[i] == 0:
-            List1.append(BWT[i])
+            List1.append(Paramater[i])
         elif Input_List[i] == 1:
-            List2.append(BWT[i])
+            List2.append(Paramater[i])
         elif Input_List[i] == 2:
-            List3.append(BWT[i])
+            List3.append(Paramater[i])
         else:
-            List4.append(BWT[i])
+            List4.append(Paramater[i])
     return List1, List2, List3, List4 
 
 FTV_0 = []
@@ -146,43 +146,44 @@ FTV_2 = []
 FTV_3 = []
 FTV_4 = [] 
 
-def List_Creation5(List1, List2, List3, List4, List5, Input): 
-    Low, Age, LWT, Race, Smoker, PTL, Hypertension, UI, FTV, BWT = readDataFile()
+def List_Creation5(List1, List2, List3, List4, List5, Input, Paramater): 
     Input_List = np.array(Input).tolist()
     for i in range(189):
         if Input_List[i] == 0: 
-            List1.append(BWT[i])
+            List1.append(Paramater[i])
         elif Input_List[i] == 1:
-            List2.append(BWT[i])
+            List2.append(Paramater[i])
         elif Input_List[i] == 2: 
-            List3.append(BWT[i])
+            List3.append(Paramater[i])
         elif Input_List[i] == 3: 
-            List4.append(BWT[i])
+            List4.append(Paramater[i])
         else: 
-            List5.append(BWT[i])
+            List5.append(Paramater[i])
     return(List1, List2, List3, List4, List5)
 
-def Chi_Square_2(Array1, Array2):
+#CREATION OF ARRAYS FOR CHI-SQUARE TESTS
+def Chi_Square_2(Array1, Array2): #Chi_Square_2 takes in two arrays and counts the number of subjects in each category. 
     Count1 = 0
     Count2 = 0
     Count3 = 0
     Count4 = 0
-    List1 = np.array(Array1).tolist()
-    List2 = np.array(Array2).tolist()
+    List1 = np.array(Array1).tolist() #Ex: List 1 is variable 1
+    List2 = np.array(Array2).tolist() #Ex: List 2 is variable 2
     for i in range(189):
-        if List1[i] == 0 and List2[i] == 0:
+        if List1[i] == 0 and List2[i] == 0: #Ex: Negative for Variables 1 and 2
             Count1 += 1
-        elif List1[i] == 0 and List2[i] == 1: 
+        elif List1[i] == 0 and List2[i] == 1: #Ex: Negative for Variable 1, Positive for Variable 2
             Count2 += 1
-        elif List1[i] == 1 and List2[i] == 0:
+        elif List1[i] == 1 and List2[i] == 0: #Ex: Positive for Variable 1, Negative for Variable 2
             Count3 += 1
-        else:
+        else: #Ex: Positive for Variables 1 and 2
             Count4 += 1
     a1 = [Count1, Count2]
     a2 = [Count3, Count4]
-    Chi_Square_Array = np.array([a1,a2])
+    Chi_Square_Array = np.array([a1,a2]) #Combines the two lists into an array which can be used for the Chi-Square test
     return Chi_Square_Array
 
+#Chi_Square_3, Chi_Square_4, and Chi_Square 5 create arrays for more categories. 
 def Chi_Square_3(Array1, Array2): 
     Count1 = 0
     Count2 = 0
@@ -297,16 +298,17 @@ Neg_UI_Pos_H = []
 Pos_UI_Neg_H = []
 Pos_UI_Pos_H = []
 
-def Multi_Factor(List1, List2, List3, List4, Input1, Input2, Input3):
+#Multi_Factor separates two
+def Multi_Factor(List1, List2, List3, List4, Input1, Input2, Paramater):
     Input1_List = np.array(Input1).tolist()
     Input2_List = np.array(Input2).tolist()
     for i in range(189): 
         if Input1_List[i] == 0 and Input2_List[i] == 0: 
-            List1.append(Input3[i])
+            List1.append(Paramater[i])
         elif Input1_List[i] == 0 and Input2_List[i] == 1:
-            List2.append(Input3[i])
+            List2.append(Paramater[i])
         elif Input1_List[i] == 1 and Input2_List[i] == 0:
-            List3.append(Input3[i])
+            List3.append(Paramater[i])
         else:
-            List4.append(Input3[i])
+            List4.append(Paramater[i])
     return List1, List2, List3, List4
