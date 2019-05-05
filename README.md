@@ -26,7 +26,7 @@ and summary of results on this dataset - no further user interaction is necessar
 
 ### Understanding The Output:
 - formatting: titles and division lines for organization
-- graphs: scatter plots (continuous data) and density curves (discrete and categorical data)
+- graphs: scatter plots (only for continuous data) and density curves
 - statistics: descriptive stats formatted into tables and significance testing with explanations
 - summary of results: shows all significance and comparative effect table for those variables found to be significant in both tests
 
