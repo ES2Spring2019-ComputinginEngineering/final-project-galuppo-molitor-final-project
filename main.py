@@ -63,7 +63,7 @@ T_Test_Print(PTL_2, PTL_0+PTL_1+PTL_3, '2 Premature Births')
 T_Test_Print(PTL_3, PTL_0+PTL_1+PTL_2, '3 Premature Births')
 Chi_Square_Test_Print(PTL_Low, "Low Birthweight and Number of Premature Births in Medical History", "Low Birthweight", "Number of Premature Births")
 Significance("No Premature Births in Medical History",PTL_0, PTL_1+PTL_2+PTL_3,PTL_Low)
-Significance("One Premature Births in Medical History",PTL_1, PTL_0+PTL_2+PTL_3,PTL_Low)
+Significance("One Premature Birth in Medical History",PTL_1, PTL_0+PTL_2+PTL_3,PTL_Low)
 Significance("Two Premature Births in Medical History",PTL_2, PTL_0+PTL_1+PTL_3,PTL_Low)
 Significance("Three Premature Births in Medical History",PTL_3, PTL_0+PTL_1+PTL_2,PTL_Low)
 
