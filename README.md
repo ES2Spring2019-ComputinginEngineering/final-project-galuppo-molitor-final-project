@@ -1,8 +1,8 @@
 # Analysis and Visualization of Birthweight Data
 
-The objective of this project was to create a tool for visualizing and analyzing a complex, large, and multidimensional dataset through skills in python to make it more understandable with graphing, statistics, and significance testing.
+The objective of this project was to create a tool for visualizing and analyzing a complex, large, and multidimensional dataset to make it more understandable.
 
-The dataset we chose to demonstate this on considers the factors that propose risk on birth weight, giving the project an interesting biomedical application. This particular dataset was strong in that it had a large number of datapoints (~200) and considered many different associated risks observable in a pregnant mothers that can be compared statistically.
+The dataset we chose to demonstate this on considers the factors that may propose risk on birth weight. This particular dataset was strong in that it had a large number of datapoints (~200) and considered various different associated variables observable in a pregnant mothers that can be compared statistically.
 
 These variables included:
 - Mother’s age
