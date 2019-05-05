@@ -57,7 +57,7 @@ def graphNumerical(x_values, y_values, classification, title):
     plt.show()
     print("The correlation coefficient for this line of best fit is", round(correlationCoefficient(x_values,y_values)[1][0],4),".")
 
-#Creates a density plot with two curves 
+#DensityPlot_2 creates a density plot with two curves 
 def DensityPlot_2(List1, List2, Label1, Label2, Title, AxisLabel):
     plt.figure()
     sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
@@ -65,7 +65,8 @@ def DensityPlot_2(List1, List2, Label1, Label2, Title, AxisLabel):
     plt.title(Title)
     plt.xlabel(AxisLabel)
     plt.show()
-    
+
+#DensityPlot_3, DensityPlot_4, and DensityPlot_5 create graphs with 3, 4, and 5 density curves respectively. 
 def DensityPlot_3(List1, List2, List3, Label1, Label2, Label3, Title): 
     plt.figure()
     sns.distplot(List1, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 3}, color = 'darkblue', rug = True, label = Label1)
@@ -164,11 +165,11 @@ def desStatsTable_5(ListAll, List1, List2, List3, List4, List5, Label1, Label2, 
     print(t)
     
 #TWO SAMPLE T-TEST FOR SAMPLES OF EQUAL SIZE
-def T_test(List1, List2):
+def T_test(List1, List2): #calculates the p-value of a two sample t-test to determine if the difference between two means is found to be statistically significant
     p_value = stats.ttest_ind(List1, List2, axis = None, equal_var = False)[1]
     return p_value
     
-def T_Test_Print(List1, List2, title): 
+def T_Test_Print(List1, List2, title): #Prints the results of a t-test
     print("-------------------------------------------------------------------------------------")
     print("T-test Results: ", title)
     print("-------------------------------------------------------------------------------------")
@@ -180,11 +181,11 @@ def T_Test_Print(List1, List2, title):
     else:
         print("The p-value for this data could not be determined as a result of sample size.")
     
-def Chi_Square_Test(Array):
+def Chi_Square_Test(Array): #Calculates the Chi-Square statistic, p-value, and degrees of freedom for a Chi-Square test on any array
     chi2_stat, p_val, dof, ex = stats.chi2_contingency(Array)
     return p_val
     
-def Chi_Square_Test_Print(Array, title, Variable1, Variable2):
+def Chi_Square_Test_Print(Array, title, Variable1, Variable2): #Prints the results of a Chi-Square Test on any array
     print("-------------------------------------------------------------------------------------")
     print("Chi-Square Test Results: ", title)
     print("-------------------------------------------------------------------------------------")
